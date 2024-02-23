@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'foraging_task/css/welcome.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiment</title>
+</head>
+<body style="text-align: center" onload="initExperiment()">
+    <h1>Welcome</h1>
+    <div class="instructions">
+        <p>
+            This experiment involves two parts:
+            <br/>
+            1) Completeing a visual task.
+            <br/>
+            2) Filling out 3 questionnaires.
+            <br/>
+            <br/>
+        </p>
+    </div>
+    <br />    
+    <div>
+        <button id="start-button" class="next-button" onclick="navigateTo('foraging_task/foraging_task_preview')">Start</button>
+    </div>
+</body>
+</html>
+
+<script src="{% static 'foraging_task/js/ExperimentManager.js' %}"></script>

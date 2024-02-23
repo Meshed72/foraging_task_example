@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'foraging_task/css/task.css' %}">
+
+<html>
+<head>
+  <title>Foraging Task</title>
+</head>
+<body onload="initTask()">
+  <!-- NEW -->
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+   
+  <div id="instructions-text1" class="instructions-text">
+    <h2>Practice - step 1</h2>
+    This step is just a test. Please click five times in succession on any of the green squares.<br />
+    Reminder: during the task you will not be asked to click on the green squares.
+  </div>
+
+  <div id="instructions-text2" class="instructions-text">
+    <h2>Practice - step 2</h2>
+    Now let’s practice the task itself. Try to pick only ripe "berries" - bright red squares. When you have managed to pick 3 ripe berries in succession, you will move on to the actual task.<br />
+    Note: there is a range of brighter and darker squares, so it’s easy to make a mistake. Continue until you manage to pick 3 ripe berries in succession.
+  </div>
+  
+  <div id="instructions-text3" class="instructions-text">
+    <h2>The Task</h2>    
+    Now you are all set to begin the task.<br />
+    Remember: your goal is to pick as many ripe “berries” as you can within 15 minutes. When you want to move to next patch, click “next patch.” The transition to the next patch will take 15 seconds, during which you will not be able to collect berries.<br />
+    We remind you again that in addition to the reward you will receive for completing the experiment, after all other participants are done, 15% of those who collect the most ripe berries and the fewest unripe berries will receive an additional reward. So try your best!<br />
+    <br>
+    <br>    
+    <img src="{% static 'foraging_task/images/instructions.png' %}" alt="Instructions Image">    
+    <br>
+    Good luck!
+    <br>
+    <button class="start-task-button" onclick="taskManager.startTask()">Start Task</button>
+  </div>
+
+  <div class="end-text">
+    <br>
+    <br>
+    <br>
+    Task finished - thank you
+  </div>
+
+  <canvas id="matrixCanvas" width="500" height="500"></canvas>
+
+  <div class="circle">
+    <div class="fill"></div>
+  </div>
+    
+  <div class="buttons-container">   
+    {% comment %} <button class="stop-task-button" onclick="taskManager.endTask()">Stop Task</button> {% endcomment %}
+    <button class="next-patch-button" onclick="taskManager.clickNextPatch()">Next Patch</button>
+    {% comment %} <button class="next-phase-button" onclick="taskManager.clickNextPhase()">Next</button> {% endcomment %}
+  </div>
+</body>
+</html>
+
+<audio id="errorSound" src="{% static 'foraging_task/sounds/error.mp3' %}"></audio>
+<audio id="correctSound" src="{% static 'foraging_task/sounds/correct.wav' %}"></audio>
+<audio id="neutralSound" src="{% static 'foraging_task/sounds/neutral.wav' %}"></audio>
+
+<script src="{% static 'foraging_task/js/config.js' %}"></script>
+<script src="{% static 'foraging_task/js/TaskManager.js' %}"></script>
+<script src="{% static 'foraging_task/js/MatrixBuilder.js' %}"></script>
+<script src="{% static 'foraging_task/js/ExperimentManager.js' %}"></script>
